@@ -9,7 +9,7 @@ import classnames from "classnames";
 const NavBar = () => {
   const Links = [
     {
-      href: "/dashboard",
+      href: "/",
       label: "Dashboard",
     },
     {
@@ -21,7 +21,7 @@ const NavBar = () => {
   const pathName = usePathname();
   console.log(pathName);
   return (
-    <nav className="flex space-x-5 border-b-2 mb-4 text-base border-g-700 px-5 h-14 items-center">
+    <nav className="flex space-x-5 border-b-2 mb-4 border-green-400 px-5 h-14 items-center">
       <Link href="/">
         <FaBug />
       </Link>
@@ -30,9 +30,14 @@ const NavBar = () => {
           <li key={link.href}>
             <Link
               href={link.href}
-              className={`${
-                pathName === link.href ? "text-zinc-900" : "text-zinc-500"
-              } hover:text-zinc-700`}
+              className={classnames({
+                "text-slate-950": pathName === link.href,
+                "text-slate-500": pathName !== link.href,
+                "hover:text-slate-800": true,
+              })}
+              // className={`${
+              //   pathName === link.href ? "text-zinc-900" : "text-zinc-500"
+              // } hover:text-zinc-700`}
             >
               {link.label}
             </Link>
